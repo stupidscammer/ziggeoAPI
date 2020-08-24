@@ -1,0 +1,78 @@
+{
+  "name": "react-ziggeo",
+  "version": "4.6.2",
+  "description": "Ziggeo's react component for easy react application deployment",
+  "main": "build/index",
+  "scripts": {
+    "start": "concurrently \"npm run dev\"",
+    "dev": "webpack-dev-server --hot --inline",
+    "reinstall": "rm -rf node_modules/ yarn.lock && yarn install",
+    "build": "npm run build:development && npm run build:production",
+    "build:development": "webpack",
+    "postbuild:development": "cp node_modules/ziggeo-client-sdk/build/*.swf build && cp node_modules/ziggeo-client-sdk/build/*.png build",
+    "build:production": "NODE_ENV=production webpack -p",
+    "build:pack": "npm run build && npm pack",
+    "rebuild-pack": "rm -rf build/ && npm run build",
+    "rebuild-dev-pack": "rm -rf build/ && npm run build:development",
+    "rebuild-npm-dev-pack": "rm -rf build/ && rm react-ziggeo-$npm_package_version.tgz && npm run build && npm pack",
+    "rebuild-demo-pack": "rm -rf build/ && rm react-ziggeo-$npm_package_version.tgz && npm run build && npm pack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ziggeo/react-ziggeo"
+  },
+  "keywords": [
+    "react-component",
+    "react",
+    "ziggeo"
+  ],
+  "files": [
+    "build"
+  ],
+  "author": {
+    "name": "Ziggeo Inc"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Ziggeo/react-ziggeo"
+  },
+  "homepage": "https://ziggeo.com",
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-decorators": "^7.0.0",
+    "@babel/plugin-proposal-do-expressions": "^7.0.0",
+    "@babel/plugin-proposal-export-default-from": "^7.0.0",
+    "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
+    "@babel/plugin-proposal-function-bind": "^7.0.0",
+    "@babel/plugin-proposal-function-sent": "^7.0.0",
+    "@babel/plugin-proposal-json-strings": "^7.0.0",
+    "@babel/plugin-proposal-logical-assignment-operators": "^7.0.0",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.0.0",
+    "@babel/plugin-proposal-numeric-separator": "^7.0.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.0.0",
+    "@babel/plugin-proposal-pipeline-operator": "^7.0.0",
+    "@babel/plugin-proposal-throw-expressions": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-syntax-import-meta": "^7.0.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.0",
+    "css-loader": "^0.26.1",
+    "file-loader": "^0.11.2",
+    "grunt": "^1.0.4",
+    "postcss-cli": "^4.1.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.9",
+    "webpack": "^2.0.0",
+    "ziggeo-client-sdk": "~2.39.16"
+  }
+}
